@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Josefin_Sans } from "next/font/google";
-import "primereact/resources/primereact.min.css";
+import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
+import "primereact/resources/primereact.min.css"; //core css
+import "primeicons/primeicons.css";
 import "./globals.scss";
 import StoreProvider from "./StoreProvider";
-import Nav from "@/shared/Nav/Nav";
+import NavBar from "@/shared/NavBar/NavBar";
 
 const josefin = Josefin_Sans({ subsets: ["latin"] });
 
@@ -21,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body suppressHydrationWarning={true} className={josefin.className}>
         <StoreProvider>
-          <Nav />
+          <NavBar />
           {children}
         </StoreProvider>
       </body>
