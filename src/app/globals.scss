@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// --- SASS file ---
+@import "../styles/app.scss";
+
+// --- Basic setup ---
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul li {
+  list-style-type: none;
+}
+
+// --- Reusable class ---
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
