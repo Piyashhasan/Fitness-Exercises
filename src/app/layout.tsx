@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Josefin_Sans } from "next/font/google";
-import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
+// import "primereact/resources/themes/lara-light-indigo/theme.css"; //theme
 import "primereact/resources/primereact.min.css"; //core css
 import "primeicons/primeicons.css";
-import "./globals.scss";
+import "./globals.css";
+import "../styles/app.scss";
 import StoreProvider from "./StoreProvider";
 import NavBar from "@/shared/NavBar/NavBar";
 

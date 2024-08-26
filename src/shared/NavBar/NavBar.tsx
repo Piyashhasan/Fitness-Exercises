@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function NavBar() {
   return (
-    <nav className="">
+    <nav>
       <div className="wrapper">
         <div className="flex items-end gap-20 py-5">
           {/* --- left side start --- */}

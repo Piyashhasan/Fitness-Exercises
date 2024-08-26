@@ -5,24 +5,30 @@ export default function Home() {
   return (
     <main>
       <div className="wrapper">
-        <div className="flex items-center justify-between">
+        <div className="relative z-20 flex items-center justify-between">
           {/* --- left side start --- */}
-          <div className="w-full bg-red-300">
-            <h5>Fitness Club</h5>
-            <h1>Sweat, Smile And Repeat</h1>
-            <p>
+          <div className="w-full">
+            <h5 className="text-[20px] text-[#FF2625] font-bold">
+              Fitness Club
+            </h5>
+            <h2 className="text-[32px] font-semibold text-black py-5">
+              Sweat, Smile <br /> And Repeat
+            </h2>
+            <p className="text-black">
               Check out the most effective exercise personalized to you... !
             </p>
 
-            <button className="">Explore Exercise</button>
+            <button className="bg-[#FF2625] text-white px-8 py-2 rounded-[3px] mt-5">
+              Explore Exercise
+            </button>
           </div>
           {/* --- left side end --- */}
 
           {/* --- right side start --- */}
           <div className="w-full mt-[-82px]">
-            <div className="object-contain object-top">
+            <div className="flex items-center justify-end">
               <Image
-                className="w-full"
+                className="w-auto max-h-[650px] object-contain"
                 src={bannerImage}
                 alt="Banner Image"
                 placeholder="blur"
@@ -30,6 +36,9 @@ export default function Home() {
             </div>
           </div>
           {/* --- right side end --- */}
+        </div>
+        <div className="relative z-10 mt-[-185px]">
+          <h1 className="text-[210px] text-[#FFE5E6]">Exercise</h1>
         </div>
       </div>
     </main>
