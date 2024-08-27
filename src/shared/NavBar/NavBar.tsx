@@ -8,9 +8,9 @@ export default function NavBar() {
       <div className="wrapper">
         <div className="flex items-end gap-20 py-5">
           {/* --- left side start --- */}
-          <div>
+          <Link href="/">
             <Image src={navLogo} alt="logo" />
-          </div>
+          </Link>
           {/* --- left side end --- */}
 
           {/* --- right side start --- */}

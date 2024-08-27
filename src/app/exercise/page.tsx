@@ -1,4 +1,5 @@
-import CategoryScrollBar from "@/components/CategoryScrollBar/CategoryScrollBar";
+import Category from "@/components/Category/Category";
+import Exercises from "@/components/Exercises/Exercises";
 import ExerciseSearchForm from "@/components/ExerciseSearchForm/ExerciseSearchForm";
 
 export default function Exercise() {
@@ -14,8 +15,12 @@ export default function Exercise() {
           {/* --- Search input start --- */}
 
           {/* --- filter category slider button start --- */}
-          <CategoryScrollBar />
+          <Category />
           {/* --- filter category slider button end --- */}
+
+          {/* --- All Exercise section start --- */}
+          <Exercises />
+          {/* --- All Exercise section end --- */}
         </div>
       </div>
     </main>

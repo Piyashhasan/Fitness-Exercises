@@ -1,5 +1,6 @@
 import bannerImage from "@/../public/assets/images/banner.png";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -18,9 +19,11 @@ export default function Home() {
               Check out the most effective exercise personalized to you... !
             </p>
 
-            <button className="bg-[#FF2625] text-white px-8 py-2 rounded-[3px] mt-5">
-              Explore Exercise
-            </button>
+            <Link href="/exercise">
+              <button className="bg-[#FF2625] text-white px-8 py-2 rounded-[3px] mt-5">
+                Explore Exercise
+              </button>
+            </Link>
           </div>
           {/* --- left side end --- */}
 

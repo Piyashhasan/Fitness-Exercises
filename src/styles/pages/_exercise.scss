@@ -1,0 +1,32 @@
+// --- Category Horizontal filter ---
+.category-filter {
+  // make space between two product card
+  .slick-track {
+    display: flex !important;
+    gap: 18px !important;
+    margin-top: 50px;
+    margin-bottom: 30px;
+  }
+
+  // next preview button hide
+  .slick-prev,
+  .slick-next {
+    display: none !important;
+  }
+
+  // bottom active dot hide
+  .slick-dots {
+    display: none !important;
+  }
+}
+
+// --- pagination ---
+.p-paginator {
+  .p-paginator-pages {
+    .p-paginator-page {
+      &.p-highlight {
+        background: #ffe5e6 !important;
+      }
+    }
+  }
+}

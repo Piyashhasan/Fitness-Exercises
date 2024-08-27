@@ -7,7 +7,7 @@ export default function ExerciseSearchForm() {
           type="text"
           placeholder="Search Exercise"
         />
-        <button className="px-12 py-3 bg-[#FF2625] text-white hover:bg-[#f54242]">
+        <button className="px-12 py-[13px] bg-[#FF2625] text-white hover:bg-[#f54242]">
           Search
         </button>
       </form>
