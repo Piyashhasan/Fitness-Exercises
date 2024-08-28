@@ -9,6 +9,11 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+}
+
 a {
   text-decoration: none;
 }

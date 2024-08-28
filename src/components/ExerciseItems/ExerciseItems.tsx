@@ -21,7 +21,7 @@ const ExerciseItems = () => {
             <div className="flex items-center justify-center">
               <img
                 className="w-full h-[250px] object-contain object-top"
-                src="https://v2.exercisedb.io/image/WkeCFzyNTeMr87"
+                src="https://v2.exercisedb.io/image/ba2gqTlyjYvi8x"
                 alt="exercise"
               />
             </div>
@@ -44,7 +44,7 @@ const ExerciseItems = () => {
           <div className="flex items-center justify-center">
             <img
               className="w-full h-[250px] object-contain object-top"
-              src="https://v2.exercisedb.io/image/WkeCFzyNTeMr87"
+              src="https://v2.exercisedb.io/image/ba2gqTlyjYvi8x"
               alt="exercise"
             />
           </div>
@@ -66,7 +66,7 @@ const ExerciseItems = () => {
           <div className="flex items-center justify-center">
             <img
               className="w-full h-[250px] object-contain object-top"
-              src="https://v2.exercisedb.io/image/WkeCFzyNTeMr87"
+              src="https://v2.exercisedb.io/image/ba2gqTlyjYvi8x"
               alt="exercise"
             />
           </div>

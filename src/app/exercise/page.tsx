@@ -1,6 +1,7 @@
 import Category from "@/components/Category/Category";
 import Exercises from "@/components/Exercises/Exercises";
 import ExerciseSearchForm from "@/components/ExerciseSearchForm/ExerciseSearchForm";
+import Footer from "@/shared/Footer/Footer";
 
 export default function Exercise() {
   return (
@@ -22,6 +23,9 @@ export default function Exercise() {
           <Exercises />
           {/* --- All Exercise section end --- */}
         </div>
+      </div>
+      <div>
+        <Footer />
       </div>
     </main>
   );
