@@ -23,9 +23,9 @@ ul li {
 }
 
 /* --- scrollbar hide --- */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   display: none;
-}
+} */
 
 /* --- Reusable class --- */
 .wrapper {
