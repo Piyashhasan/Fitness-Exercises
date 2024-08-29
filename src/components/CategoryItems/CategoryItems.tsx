@@ -1,27 +1,31 @@
 "use client";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image, { StaticImageData } from "next/image";
+import icon from "@/../public/assets/icons/gym.png";
 import Slider from "react-slick";
 import nextIcon from "@/../public/assets/icons/right-arrow.png";
 import prevIcon from "@/../public/assets/icons/left-arrow.png";
+import { useGetBodyPartListQuery } from "@/redux/services/exercisesApi";
 
 interface Props {
-  items: {
-    id: number;
-    name: string;
-    img: string | StaticImageData;
-  }[];
   selectCategory: string;
   handleSelectCategory: (categoryName: string) => void;
 }
 
-const CategoryItems = ({
-  items,
-  selectCategory,
-  handleSelectCategory,
-}: Props) => {
+const CategoryItems = ({ selectCategory, handleSelectCategory }: Props) => {
+  // -- Body part fetch from api ---
+  const { data, isLoading } = useGetBodyPartListQuery({});
+
+  const [bodyPart, setBodyPart] = useState<string[]>([]);
+  useEffect(() => {
+    if (data) {
+      setBodyPart(["all", ...data]);
+    }
+  }, [data]);
+
+  // --- Horizontal Scrollbar functionality ---
   let sliderRef = useRef<Slider | null>(null);
 
   const settings = {
@@ -73,27 +77,23 @@ const CategoryItems = ({
   return (
     <>
       <Slider ref={sliderRef} {...settings} className="category-filter">
-        {items.map((category) => {
+        {bodyPart?.map((category: string, index: number) => {
           return (
             <div
-              key={category.id}
-              onClick={() => handleSelectCategory(category.name)}
+              key={index}
+              onClick={() => handleSelectCategory(category)}
               className={`bg-[#FFE5E6] h-[170px] !flex items-center justify-center cursor-pointer shadow-md ${
-                selectCategory === category?.name
+                selectCategory === category
                   ? "border-t-[2px] border-red-400"
                   : ""
               } `}
             >
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-center">
-                  <Image
-                    className="w-[40px]"
-                    src={category.img}
-                    alt="category"
-                  />
+                  <Image className="w-[40px]" src={icon} alt="category" />
                 </div>
-                <h3 className="text-black text-center font-bold">
-                  {category.name}
+                <h3 className="text-black text-center font-bold capitalize">
+                  {category}
                 </h3>
               </div>
             </div>

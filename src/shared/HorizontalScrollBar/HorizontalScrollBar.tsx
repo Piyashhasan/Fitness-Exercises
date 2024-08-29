@@ -1,5 +1,4 @@
 "use client";
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import React, { useRef } from "react";
@@ -8,8 +7,9 @@ import nextIcon from "@/../public/assets/icons/right-arrow.png";
 import prevIcon from "@/../public/assets/icons/left-arrow.png";
 import Image from "next/image";
 import Link from "next/link";
+import { Exercise } from "@/types/types";
 
-const HorizontalScrollBar = () => {
+const HorizontalScrollBar = ({ data }: { data: Exercise[] }) => {
   let sliderRef = useRef<Slider | null>(null);
 
   const settings = {
@@ -60,140 +60,34 @@ const HorizontalScrollBar = () => {
   return (
     <>
       <Slider ref={sliderRef} {...settings} className="category-filter">
-        <Link href={`/exercise/${2}`}>
-          <div className="p-3 shadow-md bg-[#FFF7F7] border-t-2 border-[#FF2625]">
-            <div className="flex items-center justify-center">
-              <img
-                className="w-full h-[200px] object-cover object-center"
-                src="https://v2.exercisedb.io/image/ba2gqTlyjYvi8x"
-                alt="exercise"
-              />
-            </div>
-            <div className="mt-5">
-              <div className="flex items-center justify-center gap-x-3 text-white">
-                <button className="bg-red-200 px-8 py-1 rounded-full">
-                  Back
-                </button>
-                <button className="px-8 py-1 bg-yellow-200 rounded-full">
-                  Lats
-                </button>
+        {data?.map((exercise) => {
+          return (
+            <Link key={exercise.id} href={`/exercise/${exercise?.id}`}>
+              <div className="p-3 shadow-md bg-[#FFF7F7] border-t-2 border-[#FF2625] min-h-[360px]">
+                <div className="flex items-center justify-center">
+                  <img
+                    className="w-full h-[200px] object-contain"
+                    src={exercise?.gifUrl}
+                    alt="exercise"
+                  />
+                </div>
+                <div className="mt-5">
+                  <div className="flex items-center justify-center gap-x-3 text-white">
+                    <button className="bg-red-200 px-8 py-1 rounded-full">
+                      {`${exercise?.bodyPart.slice(0, 10)}`}
+                    </button>
+                    <button className="px-8 py-1 bg-yellow-200 rounded-full">
+                      {`${exercise?.target.slice(0, 10)}`}
+                    </button>
+                  </div>
+                  <h3 className="text-[20px] text-black font-bold mt-5 text-center capitalize">
+                    {exercise?.name}
+                  </h3>
+                </div>
               </div>
-              <h3 className="text-[20px] text-black font-bold mt-5 text-center">
-                Cable Bar Lateral Pulldown
-              </h3>
-            </div>
-          </div>
-        </Link>
-        <div className="p-3 shadow-md bg-[#FFF7F7] border-t-2 border-[#FF2625]">
-          <div className="flex items-center justify-center">
-            <img
-              className="w-full h-[200px] object-cover object-center"
-              src="https://v2.exercisedb.io/image/ba2gqTlyjYvi8x"
-              alt="exercise"
-            />
-          </div>
-          <div className="mt-5">
-            <div className="flex items-center justify-center gap-x-3 text-white">
-              <button className="bg-red-200 px-8 py-1 rounded-full">
-                Back
-              </button>
-              <button className="px-8 py-1 bg-yellow-200 rounded-full">
-                Lats
-              </button>
-            </div>
-            <h3 className="text-[20px] text-black font-bold mt-5 text-center">
-              Cable Bar Lateral Pulldown
-            </h3>
-          </div>
-        </div>
-        <div className="p-3 shadow-md bg-[#FFF7F7] border-t-2 border-[#FF2625]">
-          <div className="flex items-center justify-center">
-            <img
-              className="w-full h-[200px] object-cover object-center"
-              src="https://v2.exercisedb.io/image/ba2gqTlyjYvi8x"
-              alt="exercise"
-            />
-          </div>
-          <div className="mt-5">
-            <div className="flex items-center justify-center gap-x-3 text-white">
-              <button className="bg-red-200 px-8 py-1 rounded-full">
-                Back
-              </button>
-              <button className="px-8 py-1 bg-yellow-200 rounded-full">
-                Lats
-              </button>
-            </div>
-            <h3 className="text-[20px] text-black font-bold mt-5 text-center">
-              Cable Bar Lateral Pulldown
-            </h3>
-          </div>
-        </div>
-        <div className="p-3 shadow-md bg-[#FFF7F7] border-t-2 border-[#FF2625]">
-          <div className="flex items-center justify-center">
-            <img
-              className="w-full h-[200px] object-cover object-center"
-              src="https://v2.exercisedb.io/image/ba2gqTlyjYvi8x"
-              alt="exercise"
-            />
-          </div>
-          <div className="mt-5">
-            <div className="flex items-center justify-center gap-x-3 text-white">
-              <button className="bg-red-200 px-8 py-1 rounded-full">
-                Back
-              </button>
-              <button className="px-8 py-1 bg-yellow-200 rounded-full">
-                Lats
-              </button>
-            </div>
-            <h3 className="text-[20px] text-black font-bold mt-5 text-center">
-              Cable Bar Lateral Pulldown
-            </h3>
-          </div>
-        </div>
-        <div className="p-3 shadow-md bg-[#FFF7F7] border-t-2 border-[#FF2625]">
-          <div className="flex items-center justify-center">
-            <img
-              className="w-full h-[200px] object-cover object-center"
-              src="https://v2.exercisedb.io/image/ba2gqTlyjYvi8x"
-              alt="exercise"
-            />
-          </div>
-          <div className="mt-5">
-            <div className="flex items-center justify-center gap-x-3 text-white">
-              <button className="bg-red-200 px-8 py-1 rounded-full">
-                Back
-              </button>
-              <button className="px-8 py-1 bg-yellow-200 rounded-full">
-                Lats
-              </button>
-            </div>
-            <h3 className="text-[20px] text-black font-bold mt-5 text-center">
-              Cable Bar Lateral Pulldown
-            </h3>
-          </div>
-        </div>
-        <div className="p-3 shadow-md bg-[#FFF7F7] border-t-2 border-[#FF2625]">
-          <div className="flex items-center justify-center">
-            <img
-              className="w-full h-[200px] object-cover object-center"
-              src="https://v2.exercisedb.io/image/ba2gqTlyjYvi8x"
-              alt="exercise"
-            />
-          </div>
-          <div className="mt-5">
-            <div className="flex items-center justify-center gap-x-3 text-white">
-              <button className="bg-red-200 px-8 py-1 rounded-full">
-                Back
-              </button>
-              <button className="px-8 py-1 bg-yellow-200 rounded-full">
-                Lats
-              </button>
-            </div>
-            <h3 className="text-[20px] text-black font-bold mt-5 text-center">
-              Cable Bar Lateral Pulldown
-            </h3>
-          </div>
-        </div>
+            </Link>
+          );
+        })}
       </Slider>
 
       <div className="flex items-center justify-end gap-5">

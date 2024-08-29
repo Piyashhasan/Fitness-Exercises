@@ -1,18 +1,19 @@
 "use client";
-import { useGetAllExercisesQuery } from "@/redux/features/api/apiSlice";
 import { addExercises } from "@/redux/features/exercise/exerciseSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { useGetAllExercisesQuery } from "@/redux/services/exercisesApi";
 import { Exercise } from "@/types/types";
 import Link from "next/link";
 import { Paginator } from "primereact/paginator";
 import { useEffect, useState } from "react";
 
 const ExerciseItems = () => {
-  // --- all exercise call from Store ---
-  const { allExercises } = useAppSelector((state) => state.exercises);
+  // --- Exercise call from Store ---
+  const { filterExercises } = useAppSelector((state) => state.exercises);
 
   // --- data fetch from api ---
   const { data, isLoading } = useGetAllExercisesQuery({});
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -30,14 +31,14 @@ const ExerciseItems = () => {
     setRows(event.rows);
   };
 
-  const perPageExercise = allExercises?.slice(first, first + rows);
+  const perPageExercise = filterExercises?.slice(first, first + rows);
 
   return (
     <div className="my-10">
       <div className="grid grid-cols-1 gap-x-7 gap-y-10 sm:grid-cols-3 lg:grid-cols-3">
         {perPageExercise?.map((exercise: Exercise) => {
           return (
-            <Link key={exercise.id} href="">
+            <Link key={exercise.id} href={`/exercise/${exercise?.id}`}>
               <div className="p-3 shadow-md rounded-md bg-[#FFF7F7] min-h-[420px]">
                 <div className="flex items-center justify-center">
                   <img
@@ -48,11 +49,11 @@ const ExerciseItems = () => {
                 </div>
                 <div className="mt-5">
                   <div className="flex items-center justify-center gap-x-3 text-white">
-                    <button className="bg-red-200 px-8 py-1 rounded-full">
-                      {exercise?.bodyPart}
+                    <button className="bg-red-200 px-8 py-1 rounded-full check">
+                      {`${exercise?.bodyPart.slice(0, 10)}`}
                     </button>
-                    <button className="px-8 py-1 bg-yellow-200 rounded-full">
-                      {exercise?.target}
+                    <button className="px-8 py-1 bg-yellow-200 rounded-full check">
+                      {`${exercise?.target.slice(0, 10)}`}
                     </button>
                   </div>
                   <h3 className="text-[20px] text-black font-bold mt-5 text-center capitalize">
@@ -69,7 +70,7 @@ const ExerciseItems = () => {
         <Paginator
           first={first}
           rows={rows}
-          totalRecords={allExercises?.length}
+          totalRecords={filterExercises?.length}
           onPageChange={onPageChange}
         />
       </div>

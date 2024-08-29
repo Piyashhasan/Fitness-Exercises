@@ -1,8 +1,14 @@
 "use client";
+import { searchExercises } from "@/redux/features/exercise/exerciseSlice";
+import { useAppDispatch } from "@/redux/hooks";
 import { useState } from "react";
 
 export default function ExerciseSearchForm() {
   const [searchInput, setSearchInput] = useState<string>("");
+
+  const dispatch = useAppDispatch();
+
+  // --- form submit handler ---
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const searchText = searchInput
@@ -11,6 +17,10 @@ export default function ExerciseSearchForm() {
       .replace(/\s+/g, " ");
 
     setSearchInput("");
+
+    if (searchText) {
+      dispatch(searchExercises(searchText));
+    }
   };
 
   return (
@@ -24,6 +34,7 @@ export default function ExerciseSearchForm() {
           }
           type="text"
           placeholder="Search Exercise"
+          required
         />
         <button
           type="submit"

@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-const apiHost = process.env.NEXT_PUBLIC_API_HOST;
+const apiHost = process.env.NEXT_PUBLIC_EXERCISES_API_HOST;
 
 export const apiSlice = createApi({
   reducerPath: "api",
@@ -13,12 +13,5 @@ export const apiSlice = createApi({
       return headers;
     },
   }),
-  endpoints: (builder) => ({
-    getAllExercises: builder.query({
-      query: () => `/exercises?limit=0`,
-    }),
-  }),
+  endpoints: () => ({}),
 });
-
-// auto-generated based on the defined endpoints
-export const { useGetAllExercisesQuery } = apiSlice;
