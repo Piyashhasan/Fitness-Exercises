@@ -2,17 +2,13 @@
 import iconOne from "@/../public/assets/icons/body-part.png";
 import iconTwo from "@/../public/assets/icons/target.png";
 import iconThree from "@/../public/assets/icons/equipment.png";
-import {
-  useGetExerciseDetailsQuery,
-  useGetSimilarTargetExercisesQuery,
-} from "@/redux/features/api/exercisesApiSlice";
 import Image from "next/image";
-import React, { useEffect } from "react";
 import { Exercise } from "@/types/types";
 
 interface Props {
   data: Exercise;
 }
+
 const ExerciseDetails = ({ data }: Props) => {
   return (
     <div className="py-12">

@@ -1,22 +1,13 @@
 "use client";
 import { useSuggestVideosQuery } from "@/redux/services/youTubeApi";
 import { YoutubeVideo } from "@/types/types";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const ExerciseVideos = ({ name }: { name: string }) => {
   const { data } = useSuggestVideosQuery(name, {
     skip: !name,
   });
-  const [videos, setVideos] = useState([]);
-  useEffect(() => {
-    if (data && data?.contents) {
-      const check = data?.contents?.slice(0, 3);
-      console.log(check);
-    }
-  }, [name, data]);
 
-  console.log("---", videos);
   return (
     <div className="py-10">
       <h2 className="text-black text-[32px] font-semibold">

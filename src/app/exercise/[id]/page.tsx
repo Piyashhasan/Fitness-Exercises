@@ -1,12 +1,9 @@
 "use client";
-import Image from "next/image";
 import ExerciseDetails from "@/components/ExerciseDetails/ExerciseDetails";
 import ExerciseVideos from "@/components/ExerciseVideos/ExerciseVideos";
 import TargetExercise from "@/components/TargetExercise/TargetExercise";
 import EquipmentExercise from "@/components/EquipmentExercise/EquipmentExercise";
 import Footer from "@/shared/Footer/Footer";
-
-import { useEffect, useState } from "react";
 import { useGetExerciseDetailsQuery } from "@/redux/services/exercisesApi";
 
 interface Props {
