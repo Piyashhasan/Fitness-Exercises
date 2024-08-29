@@ -19,16 +19,6 @@ const Exercises = ({ params }: Props) => {
   const { id } = params;
   const { data, error, isLoading } = useGetExerciseDetailsQuery(id);
 
-  const [target, setTarget] = useState<string>("");
-  const [equipment, setEquipment] = useState<string>("");
-
-  useEffect(() => {
-    if ((data && data?.target) || (data && data?.equipment)) {
-      setTarget(data?.target);
-      setEquipment(data?.equipment);
-    }
-  }, [id, data]);
-
   return (
     <>
       <div className="wrapper">
@@ -37,15 +27,15 @@ const Exercises = ({ params }: Props) => {
         {/* --- Exercise details end --- */}
 
         {/* --- Similar Exercise video sections start --- */}
-        <ExerciseVideos />
+        <ExerciseVideos name={data?.name} />
         {/* --- Similar Exercise video sections end --- */}
 
         {/* --- Similar Target Muscle Exercise start --- */}
-        <TargetExercise target={target} />
+        <TargetExercise target={data?.target} />
         {/* --- Similar Target Muscle Exercise end --- */}
 
         {/* --- Similar Equipment Exercise start --- */}
-        <EquipmentExercise equipment={equipment} />
+        <EquipmentExercise equipment={data?.equipment} />
         {/* --- Similar Equipment Exercise end --- */}
       </div>
       <div>

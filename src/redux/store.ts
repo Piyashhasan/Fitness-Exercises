@@ -1,15 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
 import exerciseSlice from "./features/exercise/exerciseSlice";
-import { apiSlice } from "./features/api/apiSlice";
+import { exerciseApiSlice } from "./features/api/exerciseApiSlice";
+import { youTubeApiSlice } from "./features/api/youTubeApiSlice";
 
 export const store = () => {
   return configureStore({
     reducer: {
-      [apiSlice.reducerPath]: apiSlice.reducer,
+      [exerciseApiSlice.reducerPath]: exerciseApiSlice.reducer,
+      [youTubeApiSlice.reducerPath]: youTubeApiSlice.reducer,
       exercises: exerciseSlice,
     },
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(apiSlice.middleware),
+      getDefaultMiddleware().concat(
+        exerciseApiSlice.middleware,
+        youTubeApiSlice.middleware
+      ),
   });
 };
 

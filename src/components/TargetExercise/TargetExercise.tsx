@@ -11,7 +11,7 @@ const TargetExercise = ({ target }: { target: string }) => {
   return (
     <div className="py-10">
       <h2 className="text-black text-[32px] font-semibold">
-        Similar <span className="text-[#272424]">Target Muscle</span> exercise
+        Similar <span className="text-[#FF2625]">Target Muscle</span> exercise
       </h2>
       {/* --- Horizontal Scroll bar  --- */}
       {data && <HorizontalScrollBar data={data} />}

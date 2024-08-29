@@ -1,6 +1,6 @@
-import { apiSlice } from "../features/api/apiSlice";
+import { exerciseApiSlice } from "../features/api/exerciseApiSlice";
 
-const exercisesApi = apiSlice.injectEndpoints({
+const exercisesApi = exerciseApiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllExercises: builder.query({
       query: () => `/exercises?limit=0`,
