@@ -5,8 +5,8 @@ import Link from "next/link";
 export default function NavBar() {
   return (
     <nav>
-      <div className="wrapper">
-        <div className="flex items-end gap-20 py-5">
+      <div className="wrapper px-[20px] xl:px-0">
+        <div className="flex items-end gap-10 lg:gap-20 py-5">
           {/* --- left side start --- */}
           <Link href="/">
             <Image src={navLogo} alt="logo" />

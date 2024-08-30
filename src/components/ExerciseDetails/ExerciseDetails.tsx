@@ -13,14 +13,14 @@ const ExerciseDetails = ({ data }: Props) => {
   return (
     <div className="py-12">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2">
-        <div className="px-10 bg-red-300 object-cover object-top">
+        <div className="px-10 object-cover object-top">
           <img
             className="w-full h-full object-cover object-top"
             src={data?.gifUrl}
             alt="image"
           />
         </div>
-        <div className="px-10 bg-yellow-300">
+        <div className="px-10">
           <h1 className="text-black text-[38px] font-semibold capitalize">
             {data?.name ? data?.name : "---"}
           </h1>
