@@ -14,7 +14,17 @@ interface Props {
 
 const Exercises = ({ params }: Props) => {
   const { id } = params;
-  const { data, isLoading } = useGetExerciseDetailsQuery(id);
+  const { data, isLoading, isError } = useGetExerciseDetailsQuery(id);
+
+  if (isError) {
+    return (
+      <div className="h-80 flex items-center justify-center">
+        <p className="text-center">
+          Exercise Details Not Found, Error from server
+        </p>
+      </div>
+    );
+  }
 
   return (
     <>

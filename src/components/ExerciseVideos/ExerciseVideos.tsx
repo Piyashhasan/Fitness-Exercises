@@ -22,7 +22,10 @@ const ExerciseVideos = ({ name, loading }: Props) => {
       {loading || isLoading ? (
         <div className="grid grid-cols-1 gap-8 mt-10 mb-6 sm:grid-cols-3 lg:grid-cols-3">
           {Array.from({ length: 3 }).map((_, index) => (
-            <div className="shadow-lg p-5 rounded-tl-[30px] rounded-br-[30px] min-h-[380px]">
+            <div
+              key={index}
+              className="shadow-lg p-5 rounded-tl-[30px] rounded-br-[30px] min-h-[380px]"
+            >
               <ExerciseItemSkeleton key={index} />
             </div>
           ))}

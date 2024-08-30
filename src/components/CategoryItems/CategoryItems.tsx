@@ -17,7 +17,7 @@ interface Props {
 
 const CategoryItems = ({ selectCategory, handleSelectCategory }: Props) => {
   // -- Body part fetch from api ---
-  const { data, isLoading } = useGetBodyPartListQuery({});
+  const { data, isLoading, isError } = useGetBodyPartListQuery({});
 
   const [bodyPart, setBodyPart] = useState<string[]>([]);
   useEffect(() => {
@@ -74,6 +74,10 @@ const CategoryItems = ({ selectCategory, handleSelectCategory }: Props) => {
       sliderRef.current.slickPrev();
     }
   };
+
+  if (isError) {
+    return <p className="text-center">Category Not Found, Error from server</p>;
+  }
 
   return (
     <>

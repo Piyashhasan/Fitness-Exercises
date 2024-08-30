@@ -13,7 +13,7 @@ const ExerciseItems = () => {
   const { filterExercises } = useAppSelector((state) => state.exercises);
 
   // --- data fetch from api ---
-  const { data, isLoading } = useGetAllExercisesQuery({});
+  const { data, isLoading, isError } = useGetAllExercisesQuery({});
 
   const dispatch = useAppDispatch();
 
@@ -33,6 +33,10 @@ const ExerciseItems = () => {
   };
 
   const perPageExercise = filterExercises?.slice(first, first + rows);
+
+  if (isError) {
+    return <p className="text-center">Exercise Not Found, Error from server</p>;
+  }
 
   return (
     <div className="my-10">
