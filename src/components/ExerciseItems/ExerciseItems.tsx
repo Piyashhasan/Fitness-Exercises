@@ -41,15 +41,15 @@ const ExerciseItems = () => {
   return (
     <div className="my-10">
       {isLoading ? (
-        <div className="grid grid-cols-1 gap-x-7 gap-y-10 sm:grid-cols-3 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-x-7 md:gap-y-10 lg:grid-cols-3">
           {Array.from({ length: 9 }).map((_, index) => (
-            <div className="p-3 shadow-md rounded-md min-h-[400px]">
+            <div key={index} className="p-3 shadow-md rounded-md min-h-[400px]">
               <ExerciseItemSkeleton key={index} />
             </div>
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-x-7 gap-y-10 sm:grid-cols-3 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-x-7 md:gap-y-10 lg:grid-cols-3">
           {perPageExercise?.map((exercise: Exercise) => {
             return (
               <Link key={exercise.id} href={`/exercise/${exercise?.id}`}>
@@ -62,15 +62,15 @@ const ExerciseItems = () => {
                     />
                   </div>
                   <div className="mt-5">
-                    <div className="flex items-center justify-center gap-x-3 text-white">
-                      <button className="bg-red-200 px-8 py-1 rounded-full capitalize">
+                    <div className="flex items-center justify-center text-white gap-1 md:gap-3">
+                      <button className="text-[12px] md:text-[16px] bg-red-200 px-8 py-1 rounded-full capitalize">
                         {`${exercise?.bodyPart.slice(0, 10)}`}
                       </button>
-                      <button className="px-8 py-1 bg-yellow-200 rounded-full capitalize">
+                      <button className="text-[12px] md:text-[16px] px-8 py-1 bg-yellow-200 rounded-full capitalize">
                         {`${exercise?.target.slice(0, 10)}`}
                       </button>
                     </div>
-                    <h3 className="text-[20px] text-black font-bold mt-5 text-center capitalize">
+                    <h3 className="md:text-[20px] text-black font-bold mt-5 text-center capitalize">
                       {exercise?.name}
                     </h3>
                   </div>

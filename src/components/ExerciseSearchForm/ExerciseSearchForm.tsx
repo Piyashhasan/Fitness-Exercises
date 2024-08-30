@@ -25,9 +25,9 @@ export default function ExerciseSearchForm() {
 
   return (
     <div>
-      <form onSubmit={handleSearch} className="flex items-center my-5">
+      <form onSubmit={handleSearch} className="flex items-center mt-8">
         <input
-          className="w-full outline-none border-[1px] px-5 py-3"
+          className="w-full text-[14px] px-[22px] py-[9px] outline-none border-[1px] sm:text-[16px] sm:px-5 sm:py-3"
           value={searchInput}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setSearchInput(e.target.value)
@@ -38,7 +38,7 @@ export default function ExerciseSearchForm() {
         />
         <button
           type="submit"
-          className="px-12 py-[13px] bg-[#FF2625] text-white hover:bg-[#f54242]"
+          className="text-[14px] px-[22px] py-[10px] bg-[#FF2625] text-white hover:bg-[#f54242] sm:text-[16px] sm:px-12 sm:py-[13px]"
         >
           Search
         </button>

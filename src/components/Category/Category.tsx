@@ -20,7 +20,7 @@ export default function Category() {
   }, [selectCategory, dispatch]);
 
   return (
-    <div className="py-10">
+    <div className="pt-5 pb-10 sm:pt-6 md:py-10">
       <CategoryItems
         selectCategory={selectCategory}
         handleSelectCategory={handleSelectCategory}

@@ -7,15 +7,15 @@ const CategorySkeleton = () => {
         <Skeleton size="3rem" className="mr-2"></Skeleton>
         <Skeleton width="4rem" className="mb-2"></Skeleton>
       </div>
-      <div className="w-full h-[170px] shadow-md flex flex-col items-center justify-center gap-4">
+      <div className="hidden w-full h-[170px] shadow-md sm:flex flex-col items-center justify-center gap-4">
         <Skeleton size="3rem" className="mr-2"></Skeleton>
         <Skeleton width="4rem" className="mb-2"></Skeleton>
       </div>
-      <div className="w-full h-[170px] shadow-md flex flex-col items-center justify-center gap-4">
+      <div className="hidden w-full h-[170px] shadow-md sm:flex flex-col items-center justify-center gap-4">
         <Skeleton size="3rem" className="mr-2"></Skeleton>
         <Skeleton width="4rem" className="mb-2"></Skeleton>
       </div>
-      <div className="w-full h-[170px] shadow-md flex flex-col items-center justify-center gap-4">
+      <div className="hidden w-full h-[170px] shadow-md lg:flex flex-col items-center justify-center gap-4">
         <Skeleton size="3rem" className="mr-2"></Skeleton>
         <Skeleton width="4rem" className="mb-2"></Skeleton>
       </div>
