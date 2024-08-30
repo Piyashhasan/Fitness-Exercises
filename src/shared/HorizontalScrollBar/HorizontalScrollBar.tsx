@@ -1,13 +1,13 @@
 "use client";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Exercise } from "@/types/types";
 import React, { useRef } from "react";
 import Slider from "react-slick";
 import nextIcon from "@/../public/assets/icons/right-arrow.png";
 import prevIcon from "@/../public/assets/icons/left-arrow.png";
 import Image from "next/image";
 import Link from "next/link";
-import { Exercise } from "@/types/types";
 
 const HorizontalScrollBar = ({ data }: { data: Exercise[] }) => {
   let sliderRef = useRef<Slider | null>(null);

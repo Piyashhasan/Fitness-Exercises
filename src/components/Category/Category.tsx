@@ -1,8 +1,7 @@
 "use client";
-import { StaticImageData } from "next/image";
-import icon from "@/../public/assets/icons/gym.png";
+
 import CategoryItems from "../CategoryItems/CategoryItems";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch } from "@/redux/hooks";
 import { filterExercisesByCategory } from "@/redux/features/exercise/exerciseSlice";
 

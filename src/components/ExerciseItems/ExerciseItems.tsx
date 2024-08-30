@@ -1,11 +1,12 @@
 "use client";
-import { addExercises } from "@/redux/features/exercise/exerciseSlice";
+import Link from "next/link";
+import { Exercise } from "@/types/types";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { useGetAllExercisesQuery } from "@/redux/services/exercisesApi";
-import { Exercise } from "@/types/types";
-import Link from "next/link";
-import { Paginator } from "primereact/paginator";
 import { useEffect, useState } from "react";
+import { addExercises } from "@/redux/features/exercise/exerciseSlice";
+import { Paginator } from "primereact/paginator";
+import ExerciseItemSkeleton from "@/shared/Skeleton/ExerciseItemSkeleton";
 
 const ExerciseItems = () => {
   // --- Exercise call from Store ---
@@ -35,36 +36,46 @@ const ExerciseItems = () => {
 
   return (
     <div className="my-10">
-      <div className="grid grid-cols-1 gap-x-7 gap-y-10 sm:grid-cols-3 lg:grid-cols-3">
-        {perPageExercise?.map((exercise: Exercise) => {
-          return (
-            <Link key={exercise.id} href={`/exercise/${exercise?.id}`}>
-              <div className="p-3 shadow-md rounded-md bg-[#FFF7F7] min-h-[420px]">
-                <div className="flex items-center justify-center">
-                  <img
-                    className="w-full h-[250px] object-contain object-top"
-                    src={exercise?.gifUrl}
-                    alt="exercise"
-                  />
-                </div>
-                <div className="mt-5">
-                  <div className="flex items-center justify-center gap-x-3 text-white">
-                    <button className="bg-red-200 px-8 py-1 rounded-full check">
-                      {`${exercise?.bodyPart.slice(0, 10)}`}
-                    </button>
-                    <button className="px-8 py-1 bg-yellow-200 rounded-full check">
-                      {`${exercise?.target.slice(0, 10)}`}
-                    </button>
+      {isLoading ? (
+        <div className="grid grid-cols-1 gap-x-7 gap-y-10 sm:grid-cols-3 lg:grid-cols-3">
+          {Array.from({ length: 9 }).map((_, index) => (
+            <div className="p-3 shadow-md rounded-md min-h-[400px]">
+              <ExerciseItemSkeleton key={index} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 gap-x-7 gap-y-10 sm:grid-cols-3 lg:grid-cols-3">
+          {perPageExercise?.map((exercise: Exercise) => {
+            return (
+              <Link key={exercise.id} href={`/exercise/${exercise?.id}`}>
+                <div className="p-3 shadow-md rounded-md bg-[#FFF7F7] min-h-[420px]">
+                  <div className="flex items-center justify-center">
+                    <img
+                      className="w-full h-[250px] object-contain object-top"
+                      src={exercise?.gifUrl}
+                      alt="exercise"
+                    />
                   </div>
-                  <h3 className="text-[20px] text-black font-bold mt-5 text-center capitalize">
-                    {exercise?.name}
-                  </h3>
+                  <div className="mt-5">
+                    <div className="flex items-center justify-center gap-x-3 text-white">
+                      <button className="bg-red-200 px-8 py-1 rounded-full capitalize">
+                        {`${exercise?.bodyPart.slice(0, 10)}`}
+                      </button>
+                      <button className="px-8 py-1 bg-yellow-200 rounded-full capitalize">
+                        {`${exercise?.target.slice(0, 10)}`}
+                      </button>
+                    </div>
+                    <h3 className="text-[20px] text-black font-bold mt-5 text-center capitalize">
+                      {exercise?.name}
+                    </h3>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          );
-        })}
-      </div>
+              </Link>
+            );
+          })}
+        </div>
+      )}
 
       <div className="mt-10 flex items-center justify-center">
         <Paginator

@@ -8,6 +8,7 @@ import Slider from "react-slick";
 import nextIcon from "@/../public/assets/icons/right-arrow.png";
 import prevIcon from "@/../public/assets/icons/left-arrow.png";
 import { useGetBodyPartListQuery } from "@/redux/services/exercisesApi";
+import CategorySkeleton from "@/shared/Skeleton/CategorySkeleton";
 
 interface Props {
   selectCategory: string;
@@ -76,30 +77,34 @@ const CategoryItems = ({ selectCategory, handleSelectCategory }: Props) => {
 
   return (
     <>
-      <Slider ref={sliderRef} {...settings} className="category-filter">
-        {bodyPart?.map((category: string, index: number) => {
-          return (
-            <div
-              key={index}
-              onClick={() => handleSelectCategory(category)}
-              className={`bg-[#FFE5E6] h-[170px] !flex items-center justify-center cursor-pointer shadow-md ${
-                selectCategory === category
-                  ? "border-t-[2px] border-red-400"
-                  : ""
-              } `}
-            >
-              <div className="flex flex-col gap-4">
-                <div className="flex items-center justify-center">
-                  <Image className="w-[40px]" src={icon} alt="category" />
+      {isLoading ? (
+        <CategorySkeleton />
+      ) : (
+        <Slider ref={sliderRef} {...settings} className="category-filter">
+          {bodyPart?.map((category: string, index: number) => {
+            return (
+              <div
+                key={index}
+                onClick={() => handleSelectCategory(category)}
+                className={`bg-[#FFE5E6] h-[170px] !flex items-center justify-center cursor-pointer shadow-md ${
+                  selectCategory === category
+                    ? "border-t-[2px] border-red-400"
+                    : ""
+                } `}
+              >
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-center justify-center">
+                    <Image className="w-[40px]" src={icon} alt="category" />
+                  </div>
+                  <h3 className="text-black text-center font-bold capitalize">
+                    {category}
+                  </h3>
                 </div>
-                <h3 className="text-black text-center font-bold capitalize">
-                  {category}
-                </h3>
               </div>
-            </div>
-          );
-        })}
-      </Slider>
+            );
+          })}
+        </Slider>
+      )}
 
       <div className="flex items-center justify-end gap-5">
         <button onClick={previous} className="button">

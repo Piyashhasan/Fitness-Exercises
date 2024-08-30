@@ -2,10 +2,11 @@
 .category-filter {
   // make space between two product card
   .slick-track {
-    display: flex !important;
-    gap: 18px !important;
     margin-top: 40px;
     margin-bottom: 30px;
+    .slick-slide {
+      padding: 0 10px;
+    }
   }
 
   // next preview button hide
@@ -29,4 +30,10 @@
       }
     }
   }
+}
+
+// --- skeleton ---
+.p-skeleton {
+  margin: 0;
+  padding: 0;
 }

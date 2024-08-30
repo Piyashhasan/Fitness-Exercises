@@ -1,9 +1,9 @@
 "use client";
+import { Exercise } from "@/types/types";
 import iconOne from "@/../public/assets/icons/body-part.png";
 import iconTwo from "@/../public/assets/icons/target.png";
 import iconThree from "@/../public/assets/icons/equipment.png";
 import Image from "next/image";
-import { Exercise } from "@/types/types";
 
 interface Props {
   data: Exercise;
