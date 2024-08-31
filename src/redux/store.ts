@@ -15,6 +15,7 @@ export const store = () => {
         exerciseApiSlice.middleware,
         youTubeApiSlice.middleware
       ),
+    devTools: false,
   });
 };
 

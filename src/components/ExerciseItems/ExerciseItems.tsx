@@ -30,6 +30,16 @@ const ExerciseItems = () => {
   const onPageChange = (event: { first: number; rows: number }) => {
     setFirst(event.first);
     setRows(event.rows);
+    if (event.first || event.rows) {
+      const exercisesSection = document.getElementById("exercises");
+      if (exercisesSection) {
+        const topOffset = exercisesSection.offsetTop;
+        window.scrollTo({
+          top: topOffset,
+          behavior: "smooth",
+        });
+      }
+    }
   };
 
   let perPageExercise = filterExercises?.slice(first, first + rows);
