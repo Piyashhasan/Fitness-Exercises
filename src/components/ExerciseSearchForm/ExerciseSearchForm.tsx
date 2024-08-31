@@ -20,6 +20,15 @@ export default function ExerciseSearchForm() {
 
     if (searchText) {
       dispatch(searchExercises(searchText));
+
+      const exercisesSection = document.getElementById("exercises");
+      if (exercisesSection) {
+        const topOffset = exercisesSection.offsetTop;
+        window.scrollTo({
+          top: topOffset,
+          behavior: "smooth",
+        });
+      }
     }
   };
 

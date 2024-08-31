@@ -11,6 +11,17 @@ export default function Category() {
 
   const handleSelectCategory = (categoryName: string) => {
     setSelectCategory(categoryName);
+
+    if (categoryName) {
+      const exercisesSection = document.getElementById("exercises");
+      if (exercisesSection) {
+        const topOffset = exercisesSection.offsetTop;
+        window.scrollTo({
+          top: topOffset,
+          behavior: "smooth",
+        });
+      }
+    }
   };
 
   useEffect(() => {

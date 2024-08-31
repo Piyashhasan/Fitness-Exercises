@@ -49,28 +49,12 @@ export const exerciseSlice = createSlice({
         );
       }
     },
-
-    similarTargetExercises: (state, action: PayloadAction<string>) => {
-      const targetExerciseName = action.payload;
-      state.similarTargetExercises = state.allExercises.filter(
-        (exercise) => exercise.target === targetExerciseName
-      );
-    },
-    similarEquipmentExercises: (state, action: PayloadAction<string>) => {
-      const similarExerciseName = action.payload;
-      console.log("--- similar exercise---", similarExerciseName);
-    },
   },
 });
 
 // --- export actions ---
-export const {
-  addExercises,
-  searchExercises,
-  filterExercisesByCategory,
-  similarEquipmentExercises,
-  similarTargetExercises,
-} = exerciseSlice.actions;
+export const { addExercises, searchExercises, filterExercisesByCategory } =
+  exerciseSlice.actions;
 
 // --- export reducer ---
 export default exerciseSlice.reducer;

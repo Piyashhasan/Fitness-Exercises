@@ -7,9 +7,10 @@ import Slider from "react-slick";
 import nextIcon from "@/../public/assets/icons/right-arrow.png";
 import prevIcon from "@/../public/assets/icons/left-arrow.png";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const HorizontalScrollBar = ({ data }: { data: Exercise[] }) => {
+  const router = useRouter();
   let sliderRef = useRef<Slider | null>(null);
 
   const settings = {
@@ -57,12 +58,31 @@ const HorizontalScrollBar = ({ data }: { data: Exercise[] }) => {
       sliderRef.current.slickPrev();
     }
   };
+
+  const handleDynamicRoute = (id: string) => {
+    router.push(`/exercise/${id}`);
+    if (id) {
+      const exerciseDetailsSection =
+        document.getElementById("exercise-details");
+      if (exerciseDetailsSection) {
+        const topOffset = exerciseDetailsSection.offsetTop;
+        window.scrollTo({
+          top: topOffset,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
   return (
     <>
       <Slider ref={sliderRef} {...settings} className="category-filter">
         {data?.map((exercise) => {
           return (
-            <Link key={exercise.id} href={`/exercise/${exercise?.id}`}>
+            <div
+              onClick={() => handleDynamicRoute(exercise?.id)}
+              key={exercise.id}
+              className="cursor-pointer"
+            >
               <div className="p-3 shadow-md bg-[#FFF7F7] border-t-2 border-[#FF2625] min-h-[360px]">
                 <div className="flex items-center justify-center">
                   <img
@@ -85,7 +105,7 @@ const HorizontalScrollBar = ({ data }: { data: Exercise[] }) => {
                   </h3>
                 </div>
               </div>
-            </Link>
+            </div>
           );
         })}
       </Slider>

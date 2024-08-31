@@ -12,7 +12,7 @@ interface Props {
 
 const ExerciseDetails = ({ data }: Props) => {
   return (
-    <div className="pb-12 lg:py-12">
+    <div id="exercise-details" className="pb-12 lg:py-12">
       <div className="grid grid-cols-1 lg:grid-cols-2">
         <div className="flex items-center justify-center lg:h-[500px] lg:object-cover lg:object-top">
           {data?.gifUrl ? (

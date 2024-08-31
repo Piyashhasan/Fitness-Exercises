@@ -32,7 +32,7 @@ const ExerciseItems = () => {
     setRows(event.rows);
   };
 
-  const perPageExercise = filterExercises?.slice(first, first + rows);
+  let perPageExercise = filterExercises?.slice(first, first + rows);
 
   if (isError) {
     return <p className="text-center">Exercise Not Found, Error from server</p>;
@@ -49,36 +49,42 @@ const ExerciseItems = () => {
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-x-7 md:gap-y-10 lg:grid-cols-3">
-          {perPageExercise?.map((exercise: Exercise) => {
-            return (
-              <Link key={exercise.id} href={`/exercise/${exercise?.id}`}>
-                <div className="p-3 shadow-md rounded-md bg-[#FFF7F7] min-h-[420px]">
-                  <div className="flex items-center justify-center">
-                    <img
-                      className="w-full h-[250px] object-contain object-top"
-                      src={exercise?.gifUrl}
-                      alt="exercise"
-                    />
-                  </div>
-                  <div className="mt-5">
-                    <div className="flex items-center justify-center text-white gap-1 md:gap-3">
-                      <button className="text-[12px] md:text-[16px] bg-red-200 px-8 py-1 rounded-full capitalize">
-                        {`${exercise?.bodyPart.slice(0, 10)}`}
-                      </button>
-                      <button className="text-[12px] md:text-[16px] px-8 py-1 bg-yellow-200 rounded-full capitalize">
-                        {`${exercise?.target.slice(0, 10)}`}
-                      </button>
+        <>
+          {perPageExercise.length === 0 ? (
+            <p className="text-center">Exercises Not Found ...</p>
+          ) : (
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-x-7 md:gap-y-10 lg:grid-cols-3">
+              {perPageExercise?.map((exercise: Exercise) => {
+                return (
+                  <Link key={exercise.id} href={`/exercise/${exercise?.id}`}>
+                    <div className="p-3 shadow-md rounded-md bg-[#FFF7F7] min-h-[420px]">
+                      <div className="flex items-center justify-center">
+                        <img
+                          className="w-full h-[250px] object-contain object-top"
+                          src={exercise?.gifUrl}
+                          alt="exercise"
+                        />
+                      </div>
+                      <div className="mt-5">
+                        <div className="flex items-center justify-center text-white gap-1 md:gap-3">
+                          <button className="text-[12px] md:text-[16px] bg-red-200 px-8 py-1 rounded-full capitalize">
+                            {`${exercise?.bodyPart.slice(0, 10)}`}
+                          </button>
+                          <button className="text-[12px] md:text-[16px] px-8 py-1 bg-yellow-200 rounded-full capitalize">
+                            {`${exercise?.target.slice(0, 10)}`}
+                          </button>
+                        </div>
+                        <h3 className="md:text-[20px] text-black font-bold mt-5 text-center capitalize">
+                          {exercise?.name ? exercise?.name.slice(0, 25) : "---"}
+                        </h3>
+                      </div>
                     </div>
-                    <h3 className="md:text-[20px] text-black font-bold mt-5 text-center capitalize">
-                      {exercise?.name ? exercise?.name.slice(0, 25) : "---"}
-                    </h3>
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
+        </>
       )}
 
       <div className="mt-10 flex items-center justify-center">
