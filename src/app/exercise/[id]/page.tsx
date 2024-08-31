@@ -28,7 +28,7 @@ const Exercises = ({ params }: Props) => {
 
   return (
     <>
-      <div className="wrapper">
+      <div className="wrapper px-[20px] py-[10px] xl:p-0">
         {/* --- Exercise details start --- */}
         <ExerciseDetails data={data} />
         {/* --- Exercise details end --- */}

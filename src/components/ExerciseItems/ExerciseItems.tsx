@@ -71,7 +71,7 @@ const ExerciseItems = () => {
                       </button>
                     </div>
                     <h3 className="md:text-[20px] text-black font-bold mt-5 text-center capitalize">
-                      {exercise?.name}
+                      {exercise?.name ? exercise?.name.slice(0, 25) : "---"}
                     </h3>
                   </div>
                 </div>

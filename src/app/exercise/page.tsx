@@ -8,7 +8,7 @@ export default function Exercise() {
     <main>
       <div className="wrapper">
         <div className="py-[50px] px-[20px] xl:px-0">
-          <h1 className="text-[26px] text-center text-black font-bold sm:text-[42px]">
+          <h1 className="text-[26px] text-center text-pretty text-black font-bold sm:text-[42px]">
             Awesome Exercise You <br /> Should Know
           </h1>
           {/* --- Search input start --- */}

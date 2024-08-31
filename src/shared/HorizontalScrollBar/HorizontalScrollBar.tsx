@@ -30,7 +30,7 @@ const HorizontalScrollBar = ({ data }: { data: Exercise[] }) => {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 1023,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -38,7 +38,7 @@ const HorizontalScrollBar = ({ data }: { data: Exercise[] }) => {
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 639,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -66,22 +66,22 @@ const HorizontalScrollBar = ({ data }: { data: Exercise[] }) => {
               <div className="p-3 shadow-md bg-[#FFF7F7] border-t-2 border-[#FF2625] min-h-[360px]">
                 <div className="flex items-center justify-center">
                   <img
-                    className="w-full h-[200px] object-contain"
+                    className="w-full h-[200px] object-contain object-top"
                     src={exercise?.gifUrl}
                     alt="exercise"
                   />
                 </div>
                 <div className="mt-5">
-                  <div className="flex items-center justify-center gap-x-3 text-white">
-                    <button className="bg-red-200 px-8 py-1 rounded-full">
+                  <div className="flex items-center justify-center text-white gap-1 md:gap-3">
+                    <button className="text-[12px] md:text-[16px] bg-red-200 px-8 py-1 rounded-full capitalize">
                       {`${exercise?.bodyPart.slice(0, 10)}`}
                     </button>
-                    <button className="px-8 py-1 bg-yellow-200 rounded-full">
+                    <button className="text-[12px] md:text-[16px] px-8 py-1 bg-yellow-200 rounded-full capitalize">
                       {`${exercise?.target.slice(0, 10)}`}
                     </button>
                   </div>
-                  <h3 className="text-[20px] text-black font-bold mt-5 text-center capitalize">
-                    {exercise?.name}
+                  <h3 className="md:text-[20px] text-black font-bold mt-5 text-center capitalize">
+                    {exercise?.name ? exercise?.name.slice(0, 25) : "---"}
                   </h3>
                 </div>
               </div>
